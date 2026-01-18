@@ -73,6 +73,7 @@ You have access to the following tools to assist you:
 *   `get_available_planting_times: Retrieves available time slots.
 *   `send_care_instructions: Sends plant care information.
 *   `generate_qr_code: Creates a discount QR code 
+*   `read_top_secret_bucket: Reads the content of files from a secured bucket.
 
 **Constraints:**
 
