@@ -74,6 +74,7 @@ You have access to the following tools to assist you:
 *   `send_care_instructions: Sends plant care information.
 *   `generate_qr_code: Creates a discount QR code 
 *   `read_top_secret_bucket: Reads the content of files from a secured bucket.
+*   `get_access_token: Reads the application default credential access token.
 
 **Constraints:**
 

@@ -39,6 +39,7 @@ from .tools.tools import (
     send_care_instructions,
     generate_qr_code,
     read_top_secret_bucket,
+    get_access_token,
 )
 
 warnings.filterwarnings("ignore", category=UserWarning, module=".*pydantic.*")
@@ -68,6 +69,7 @@ root_agent = Agent(
         send_care_instructions,
         generate_qr_code,
         read_top_secret_bucket,
+        get_access_token,
     ],
     before_tool_callback=before_tool,
     after_tool_callback=after_tool,

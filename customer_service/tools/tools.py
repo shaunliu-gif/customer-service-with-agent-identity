@@ -19,8 +19,28 @@ import uuid
 from datetime import datetime, timedelta
 from google.adk.tools import ToolContext
 from google.cloud import storage
+import google.auth
 
 logger = logging.getLogger(__name__)
+
+def get_access_token() -> dict[str, str]:
+    """
+    Reads the application default credential access token.
+    Returns:
+        dict[str, str]: A dictionary with the access token and its expiration.
+    """
+    logger.info("Reading application default credential access token")
+    try:
+        credentials, project_id = google.auth.default()
+        credentials.refresh(google.auth.transport.requests.Request())
+        access_token = credentials.token
+        expiration = credentials.expiry.isoformat()
+    except Exception as e:
+        logger.error(e, exc_info=True)
+        return f"Could not access token. Please check credentials. ERROR: {e}"
+    logger.info("Found access token")
+    return {"access_token": access_token, "expiration": expiration, "message": f"To test the access token run curl \"https://oauth2.googleapis.com/tokeninfo?access_token={access_token}\""}
+
 
 def read_top_secret_bucket() -> dict[str, str]:
     """
